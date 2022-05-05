@@ -1,6 +1,8 @@
 #ifndef _MCU_Mega328_HPP
 #define _MCU_Mega328_HPP
 
+#include "RegisterBase.hpp"
+
 namespace MCU_Mega328
 {
 	
