@@ -26,11 +26,11 @@ namespace MCU_Mega328
 		// end IO port C
 		
 		// IO port D
-		struct PIND_ : public RegisterBase<0x26, 8, ReadWriteMode> {};
+		struct PIND_ : public RegisterBase<0x29, 8, ReadWriteMode> {};
 		
-		struct DDRD_ : public RegisterBase<0x27, 8, ReadWriteMode> {};
+		struct DDRD_ : public RegisterBase<0x2A, 8, ReadWriteMode> {};
 		
-		struct PORTD_ : public RegisterBase<0x28, 8, ReadWriteMode>	{};
+		struct PORTD_ : public RegisterBase<0x2B, 8, ReadWriteMode>	{};
 		// end IO port D
 		
 		//Digital input disable register 0
