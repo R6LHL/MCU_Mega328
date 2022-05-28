@@ -41,7 +41,99 @@ namespace MCU_Mega328
 		struct DIDR1_ : public RegisterBase<0x7f, 8, ReadWriteMode> {};
 		// end Digital input disable register 1
 		
+		//General purpose IO register 0
+		struct GPIOR0_ : public RegisterBase<0x3e, 8, ReadWriteMode> {};
+		//end General purpose IO register 0
+		
+		//General purpose IO register 1
+		struct GPIOR1_ : public RegisterBase<0x4a, 8, ReadWriteMode> {};
+		//end General purpose IO register 1
+		
+		//General purpose IO register 2
+		struct GPIOR2_ : public RegisterBase<0x4b, 8, ReadWriteMode> {};
+		//end General purpose IO register 2
+		
 	} // end IO
+	
+	namespace Core_
+	{
+		// Status register
+		struct SREG_ : public RegisterBase<0x5f, 8, ReadWriteMode>
+		// end Status register
+		
+		// Stack pointer register low
+		struct SPL_ : public RegisterBase<0x5d, 8, ReadWriteMode>
+		// end Stack pointer register low
+		
+		// Stack pointer register low
+		struct SPH_ : public RegisterBase<0x5e, 8, ReadWriteMode>
+		// end Stack pointer register low
+		
+		// MCU control register
+		struct MCUCR_ : public RegisterBase<0x55, 8, ReadWriteMode>
+		// end MCU control register
+		
+		// MCU status register
+		struct MCUSR_ : public RegisterBase<0x54, 8, ReadWriteMode>
+		// end MCU status register
+		
+		// Sleep mode control register
+		struct SMCR_ : public RegisterBase<0x53, 8, ReadWriteMode>
+		// end Sleep mode control register
+		
+		// Oscillator calibration register
+		struct SMCR_ : public RegisterBase<0x66, 8, ReadWriteMode>
+		// end Oscillator calibration register
+		
+		//Clock Precaler register
+		struct CLKPR_ : public RegisterBase<0x61, 8, ReadWriteMode>
+		// end Clock Precaler register
+		
+		//Watchdog timer control register
+		struct WDTCSR_ : public RegisterBase<0x60, 8, ReadWriteMode>
+		// end Watchdog timer control register
+		
+		//Power reduction register
+		struct PRR_ : public RegisterBase<0x64, 8, ReadWriteMode>
+		// end Power reduction register
+		
+	}// end MCU core control registers
+	
+	namespace EXINT_ //external interrupts
+	{
+		//External interrupt control register A
+		struct EICRA_ : public RegisterBase<0x69, 8, ReadWriteMode>
+		// end External interrupt control register A
+		
+		//External interrupt mask register
+		struct EIMSK_ : public RegisterBase<0x3d, 8, ReadWriteMode>
+		// end External interrupt mask register
+		
+		//External interrupt flag register
+		struct EIFR_ : public RegisterBase<0x3c, 8, ReadWriteMode>
+		// end External interrupt flag register
+		
+		//Pin Change Interrupt Control register
+		struct PCICR_ : public RegisterBase<0x68, 8, ReadWriteMode>
+		// end Pin Change Interrupt Control register\
+		
+		//Pin Change Interrupt flag register
+		struct PCIFR_ : public RegisterBase<0x3b, 8, ReadWriteMode>
+		// end Pin Change Interrupt flag register
+		
+		//Pin Change mask register 2
+		struct PCMSK2_ : public RegisterBase<0x6d, 8, ReadWriteMode>
+		// end Pin Change mask register 2
+		
+		//Pin Change mask register 1
+		struct PCMSK1_ : public RegisterBase<0x6c, 8, ReadWriteMode>
+		// end Pin Change mask register 1
+		
+		//Pin Change mask register 0
+		struct PCMSK0_ : public RegisterBase<0x6b, 8, ReadWriteMode>
+		// end Pin Change mask register 0
+		
+	}// end external interrupts
 	
 	namespace TC_ //Timer_counters
 	{
@@ -294,6 +386,28 @@ namespace MCU_Mega328
 		// end ADC data register high
 
 	}// end Analog to digital converter
+	
+	//EEPROM
+	namespace EEPROM_
+	{
+		// EEPROM address register high
+		struct EEARH_ : public RegisterBase<0x42, 8,  ReadWriteMode> {};
+		// end EEPROM address register high
+		
+		// EEPROM address register low
+		struct EEARL_ : public RegisterBase<0x41, 8,  ReadWriteMode> {};
+		// end EEPROM address register low
+		
+		// EEPROM data register
+		struct EEDR_ : public RegisterBase<0x40, 8,  ReadWriteMode> {};
+		// end EEPROM data register
+		
+		// EEPROM control register
+		struct EECR_ : public RegisterBase<0x3f, 8,  ReadWriteMode> {};
+		// end EEPROM control register
+				
+	}// end EEPROM
+	
 	
 	//Debug Wire on-chip debug system
 	namespace DW_
