@@ -299,7 +299,7 @@ namespace MCU_Mega328
 	namespace DW_
 	{
 		//debugWire data register
-		struct DWDR_ : public RegisterBase<0x51, 8,  ReadWriteModeMode> {};
+		struct DWDR_ : public RegisterBase<0x51, 8,  ReadWriteMode> {};
 		//end debugWire data register
 		
 	}// end Debug Wire on-chip debug system
@@ -308,7 +308,7 @@ namespace MCU_Mega328
 	namespace Self_programming_
 	{
 		//Store program memory control and status register
-		struct SPMCSR_ : public RegisterBase<0x57, 8,  ReadWriteModeMode> {};
+		struct SPMCSR_ : public RegisterBase<0x57, 8,  ReadWriteMode> {};
 		//end Store program memory control and status register
 		
 	} //end Self_programming
