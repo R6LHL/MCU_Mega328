@@ -2,6 +2,7 @@
 #define _MCU_Mega328_HPP
 
 #include "RegisterBase.hpp"
+#include "IO_port_basic.hpp"
 
 // Atmega328 MicroController Unit 
 namespace MCU_Mega328
@@ -9,48 +10,28 @@ namespace MCU_Mega328
 	
 	namespace IO_
 	{
-		// IO port B		
-		struct PINB_ : public RegisterBase<0x23, 8, ReadWriteMode> {};
-		
-		struct DDRB_ : public RegisterBase<0x24, 8, ReadWriteMode> {};
-		
-		struct PORTB_ : public RegisterBase<0x25, 8, ReadWriteMode>{};
-		// end IO port B
-		
-		// IO port C
-		struct PINC_ : public RegisterBase<0x26, 8, ReadWriteMode> {};
-		
-		struct DDRC_ : public RegisterBase<0x27, 8, ReadWriteMode> {};
-		
-		struct PORTC_ : public RegisterBase<0x28, 8, ReadWriteMode> {};
-		// end IO port C
-		
-		// IO port D
-		struct PIND_ : public RegisterBase<0x29, 8, ReadWriteMode> {};
-		
-		struct DDRD_ : public RegisterBase<0x2A, 8, ReadWriteMode> {};
-		
-		struct PORTD_ : public RegisterBase<0x2B, 8, ReadWriteMode>	{};
-		// end IO port D
-		
+		struct PORTB_ : public IO_port_basic<0x23, 0x24, 0x25> {};
+		struct PORTC_ : public IO_port_basic<0x26, 0x27, 0x28> {};
+		struct PORTD_ : public IO_port_basic<0x29, 0x2A, 0x2B> {};
+				
 		//Digital input disable register 0
-		struct DIDR0_ : public RegisterBase<0x7e, 8, ReadWriteMode> {};
+		struct DIDR0_ : public RegisterBase<0x7e> {};
 		// end Digital input disable register 0
 		
 		//Digital input disable register 1
-		struct DIDR1_ : public RegisterBase<0x7f, 8, ReadWriteMode> {};
+		struct DIDR1_ : public RegisterBase<0x7f> {};
 		// end Digital input disable register 1
 		
 		//General purpose IO register 0
-		struct GPIOR0_ : public RegisterBase<0x3e, 8, ReadWriteMode> {};
+		struct GPIOR0_ : public RegisterBase<0x3e> {};
 		//end General purpose IO register 0
 		
 		//General purpose IO register 1
-		struct GPIOR1_ : public RegisterBase<0x4a, 8, ReadWriteMode> {};
+		struct GPIOR1_ : public RegisterBase<0x4a> {};
 		//end General purpose IO register 1
 		
 		//General purpose IO register 2
-		struct GPIOR2_ : public RegisterBase<0x4b, 8, ReadWriteMode> {};
+		struct GPIOR2_ : public RegisterBase<0x4b> {};
 		//end General purpose IO register 2
 		
 	} // end IO
@@ -58,79 +39,82 @@ namespace MCU_Mega328
 	namespace Core_
 	{
 		// Status register
-		struct SREG_ : public RegisterBase<0x5f, 8, ReadWriteMode>
+		struct SREG_ : public RegisterBase<0x5f> {};
 		// end Status register
 		
 		// Stack pointer register low
-		struct SPL_ : public RegisterBase<0x5d, 8, ReadWriteMode>
+		struct SPL_ : public RegisterBase<0x5d> {};
 		// end Stack pointer register low
 		
 		// Stack pointer register low
-		struct SPH_ : public RegisterBase<0x5e, 8, ReadWriteMode>
+		struct SPH_ : public RegisterBase<0x5e> {};
 		// end Stack pointer register low
 		
 		// MCU control register
-		struct MCUCR_ : public RegisterBase<0x55, 8, ReadWriteMode>
+		struct MCUCR_ : public RegisterBase<0x55> {};
 		// end MCU control register
 		
 		// MCU status register
-		struct MCUSR_ : public RegisterBase<0x54, 8, ReadWriteMode>
+		struct MCUSR_ : public RegisterBase<0x54> {};
 		// end MCU status register
 		
 		// Sleep mode control register
-		struct SMCR_ : public RegisterBase<0x53, 8, ReadWriteMode>
+		struct SMCR_ : public RegisterBase<0x53> {};
 		// end Sleep mode control register
 		
 		// Oscillator calibration register
-		struct SMCR_ : public RegisterBase<0x66, 8, ReadWriteMode>
+		struct OSCCAL_ : public RegisterBase<0x66> {};
 		// end Oscillator calibration register
 		
 		//Clock Precaler register
-		struct CLKPR_ : public RegisterBase<0x61, 8, ReadWriteMode>
+		struct CLKPR_ : public RegisterBase<0x61> {};
 		// end Clock Precaler register
 		
 		//Watchdog timer control register
-		struct WDTCSR_ : public RegisterBase<0x60, 8, ReadWriteMode>
+		struct WDTCSR_ : public RegisterBase<0x60> {};
 		// end Watchdog timer control register
 		
 		//Power reduction register
-		struct PRR_ : public RegisterBase<0x64, 8, ReadWriteMode>
+		struct PRR_ : public RegisterBase<0x64> {};
 		// end Power reduction register
+		
+		inline static void cli(void) {asm volatile ("cli");}
+		inline static void sei(void) {asm volatile ("sei");}
 		
 	}// end MCU core control registers
 	
 	namespace EXINT_ //external interrupts
 	{
 		//External interrupt control register A
-		struct EICRA_ : public RegisterBase<0x69, 8, ReadWriteMode>
+		struct EICRA_ : public RegisterBase<0x69> {};
 		// end External interrupt control register A
 		
 		//External interrupt mask register
-		struct EIMSK_ : public RegisterBase<0x3d, 8, ReadWriteMode>
+		struct EIMSK_ : public RegisterBase<0x3d> {};
 		// end External interrupt mask register
 		
 		//External interrupt flag register
-		struct EIFR_ : public RegisterBase<0x3c, 8, ReadWriteMode>
+		struct EIFR_ : public RegisterBase<0x3c> {};
 		// end External interrupt flag register
 		
 		//Pin Change Interrupt Control register
-		struct PCICR_ : public RegisterBase<0x68, 8, ReadWriteMode>
-		// end Pin Change Interrupt Control register\
+		struct PCICR_ : public RegisterBase<0x68> {};
+		// end Pin Change Interrupt Control register
 		
 		//Pin Change Interrupt flag register
-		struct PCIFR_ : public RegisterBase<0x3b, 8, ReadWriteMode>
+		struct PCIFR_ : public RegisterBase<0x3b> {};
 		// end Pin Change Interrupt flag register
 		
 		//Pin Change mask register 2
-		struct PCMSK2_ : public RegisterBase<0x6d, 8, ReadWriteMode>
+		struct PCMSK2_ : public RegisterBase<0x6d> {};
 		// end Pin Change mask register 2
 		
 		//Pin Change mask register 1
-		struct PCMSK1_ : public RegisterBase<0x6c, 8, ReadWriteMode>
+		struct PCMSK1_ : public RegisterBase<0x6c> {};
 		// end Pin Change mask register 1
 		
 		//Pin Change mask register 0
-		struct PCMSK0_ : public RegisterBase<0x6b, 8, ReadWriteMode>
+		struct PCMSK0_ : public RegisterBase<0x6b> {};
 		// end Pin Change mask register 0
 		
 	}// end external interrupts
@@ -139,37 +123,37 @@ namespace MCU_Mega328
 	{
 	
 		//General TC control register
-		struct GTCCR_ : public RegisterBase<0x43, 8, ReadWriteMode>	{};
+		struct GTCCR_ : public RegisterBase<0x43>	{};
 		//end General TC control register
 		
 		namespace TC0_ // Timer-counter 0 8bit
 		{
 			//TC0_ flag register
-			struct TIFR0_ : public RegisterBase<0x35, 8, ReadWriteMode> {};
+			struct TIFR0_ : public RegisterBase<0x35> {};
 			// end TC0_ flag register
 		
 			// TC0_ control register A
-			struct TCCR0A_ : public RegisterBase<0x44, 8, ReadWriteMode> {};
+			struct TCCR0A_ : public RegisterBase<0x44> {};
 			//end  TC0_ control register A
 		
 			// TC0_ control register B
-			struct TCCR0B_ : public RegisterBase<0x45, 8, ReadWriteMode> {};
+			struct TCCR0B_ : public RegisterBase<0x45> {};
 			//end TC0_ control register B
 		
 			// TC0_ interrupt mask register
-			struct TIMSK0_ : public RegisterBase<0x6e, 8, ReadWriteMode> {};
+			struct TIMSK0_ : public RegisterBase<0x6e> {};
 			// end TC0_ interrupt mask register
 			
 			// TC0_ Counter value register
-			struct TCNT0_ : public RegisterBase<0x46, 8, ReadWriteMode> {};
+			struct TCNT0_ : public RegisterBase<0x46> {};
 			// end TC0_ Counter value register
 			
 			// TC0_ output compare register A
-			struct OCR0A_ : public RegisterBase<0x47, 8, ReadWriteMode> {};
+			struct OCR0A_ : public RegisterBase<0x47> {};
 			//end TC0_ output compare register A
 			
 			// TC0_ output compare register B
-			struct OCR0B_ : public RegisterBase<0x48, 8, ReadWriteMode> {};
+			struct OCR0B_ : public RegisterBase<0x48> {};
 			//end TC0_ output compare register B
 						
 		} //end Timer-counter 0
@@ -177,59 +161,59 @@ namespace MCU_Mega328
 		namespace TC1_ // Timer-counter 1 16bit
 		{
 			//TC1_ control register A
-			struct TCCR1A_ : public RegisterBase<0x80, 8, ReadWriteMode> {}; 
+			struct TCCR1A_ : public RegisterBase<0x80> {}; 
 			//end TC1_ control register A
 			
 			//TC1_ control register B
-			struct TCCR1B_ : public RegisterBase<0x81, 8, ReadWriteMode> {};
+			struct TCCR1B_ : public RegisterBase<0x81> {};
 			//end TC1_ control register B
 			
 			//TC1_ control register C
-			struct TCCR1C_ : public RegisterBase<0x82, 8, ReadWriteMode> {};
+			struct TCCR1C_ : public RegisterBase<0x82> {};
 			//end TC1_ control register C
 			
 			//?????????????????Access????????????????????????????????????
 			// TC1_ Counter value low byte
-			struct TCNT1L_ : public RegisterBase<0x84, 8, ReadWriteMode> {};
+			struct TCNT1L_ : public RegisterBase<0x84> {};
 			//end TC1_ Counter value low byte
 			
 			// TC1_ Counter value high byte
-			struct TCNT1H_ : public RegisterBase<0x85, 8, ReadWriteMode> {};
+			struct TCNT1H_ : public RegisterBase<0x85> {};
 			//end TC1_ Counter value high byte
 			//?????????????????Access????????????????????????????????????
 			
 			//?????????????????Access????????????????????????????????????
 			// TC1_ input capture register 1 low byte
-			struct ICR1L_ : public RegisterBase<0x86, 8, ReadWriteMode> {};
+			struct ICR1L_ : public RegisterBase<0x86> {};
 			//end TC1_ input capture register1 low byte
 			
 			// TC1_ input capture register 1 high byte
-			struct ICR1H_ : public RegisterBase<0x87, 8, ReadWriteMode> {};
+			struct ICR1H_ : public RegisterBase<0x87> {};
 			//end TC1_ input capture register 1 high byte
 			//?????????????????Access????????????????????????????????????
 			
 			//TC1_ Output compare register 1 A low byte
-			struct OCR1AL_ : public RegisterBase<0x88, 8, ReadWriteMode> {};
+			struct OCR1AL_ : public RegisterBase<0x88> {};
 			//end TC1_ Output compare register 1 A low byte
 			
 			//TC1_ Output compare register 1 A high byte
-			struct OCR1AH_ : public RegisterBase<0x89, 8, ReadWriteMode> {};
+			struct OCR1AH_ : public RegisterBase<0x89> {};
 			//end TC1_ Output compare register 1 A high byte
 			
 			//TC1_ Output compare register 1 B low byte
-			struct OCR1BL_ : public RegisterBase<0x8a, 8, ReadWriteMode> {};
+			struct OCR1BL_ : public RegisterBase<0x8a> {};
 			//end TC1_ Output compare register 1 B low byte
 			
 			//TC1_ Output compare register 1 B high byte
-			struct OCR1BH_ : public RegisterBase<0x8b, 8, ReadWriteMode> {};
+			struct OCR1BH_ : public RegisterBase<0x8b> {};
 			//end TC1_ Output compare register 1 B high byte
 			
 			//TC1_ interrupt mask register
-			struct TIMSK1_ : public RegisterBase<0x6f, 8, ReadWriteMode> {};
+			struct TIMSK1_ : public RegisterBase<0x6f> {};
 			// end TC1_ interrupt mask register
 			
 			//TC1_ interrupt flag register
-			struct TIFR1_ : public RegisterBase<0x36, 8, ReadWriteMode> {};
+			struct TIFR1_ : public RegisterBase<0x36> {};
 			// end TC1_ interrupt flag register
 					
 		}//end  Timer-counter 1 16bit
@@ -237,35 +221,106 @@ namespace MCU_Mega328
 		namespace TC2_ // Timer-counter 2 8bit
 		{
 			//TC2_ control register A
-			struct TCCR2A_ : public RegisterBase<0xb0, 8, ReadWriteMode> {};
+			struct TCCR2A_ : public RegisterBase<0xb0> {};
 			// end TC2_ control register A
 			
 			//TC2_ control register B
-			struct TCCR2B_ : public RegisterBase<0xb1, 8, ReadWriteMode> {};
+			struct TCCR2B_ : public RegisterBase<0xb1> 
+			{
+				/*
+				Bit 7 – FOC2A: Force Output Compare A
+				Bit 6 – FOC2B: Force Output Compare B
+				Bit 3 – WGM22: Waveform Generation Mode
+				Bits 2:0 – CS2[2:0]: Clock Select 2 [n = 0..2]
+				*/
+				
+				static void TimerStop(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<2)|(1<<1)|(1<<0);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler1(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<2));
+					byte_ |= (1<<0);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler8(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<2)|(1<<0));
+					byte_ |= (1<<1);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler32(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~(1<<2);
+					byte_ |= ((1<<1)|(1<<0));
+					Set(byte_);
+				}
+				
+				static void SetPrescaler64(void)
+				{			
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<1)|(1<<0));
+					byte_ |= (1<<2);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler128(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~(1<<1);
+					byte_ |= ((1<<2)|(1<<0));
+					Set(byte_);
+				}
+				
+				static void SetPrescaler256(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~(1<<0);
+					byte_ |= ((1<<2)|(1<<1));
+					Set(byte_);
+				}
+				
+				static void SetPrescaler1024(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ |= ((1<<2)|(1<<1)|(1<<0));
+					Set(byte_);
+				}
+				
+			};
 			// end TC2_ control register B
 			
 			//TC2_ counter value register
-			struct TCNT2_ : public RegisterBase<0xb2, 8, ReadWriteMode> {};
+			struct TCNT2_ : public RegisterBase<0xb2> {};
 			// end TC2_ counter value register
 			
 			//TC2_ output compare register A
-			struct OCR2A_ : public RegisterBase<0xb3, 8, ReadWriteMode> {};
+			struct OCR2A_ : public RegisterBase<0xb3> {};
 			// end TC2_ output compare register A
 			
 			//TC2_ output compare register B
-			struct OCR2B_ : public RegisterBase<0xb4, 8, ReadWriteMode> {};
+			struct OCR2B_ : public RegisterBase<0xb4e> {};
 			// end TC2_ output compare register B
 			
 			//TC2_ iterrupt mask register
-			struct TIMSK2_ : public RegisterBase<0x70, 8, ReadWriteMode> {};
+			struct TIMSK2_ : public RegisterBase<0x70> {};
 			// end TC2_ iterrupt mask register
 			
 			//TC2_ iterrupt flag register
-			struct TIFR2_ : public RegisterBase<0x37, 8, ReadWriteMode> {};
+			struct TIFR2_ : public RegisterBase<0x37> {};
 			// end TC2_ iterrupt flag register
 			
 			//Asynchronous status register
-			struct ASSR_ : public RegisterBase<0xb6, 8, ReadWriteMode> {};
+			struct ASSR_ : public RegisterBase<0xb6> {};
 			//end Asynchronous status register
 			
 		}// end Timer-counter 2 8bit
@@ -276,15 +331,15 @@ namespace MCU_Mega328
 	namespace SPI_
 	{
 		//SPI_ control register 0
-		struct SPCR0_ : public RegisterBase<0x4c, 8, ReadWriteMode> {};
+		struct SPCR0_ : public RegisterBase<0x4c> {};
 		//end SPI_ control register 0
 		
 		//SPI_ status register 0
-		struct SPSR0_ : public RegisterBase<0x4d, 8, ReadWriteMode> {};
+		struct SPSR0_ : public RegisterBase<0x4d> {};
 		// end SPI_ status register 0
 		
 		//SPI_ data register 0
-		struct SPDR0_ : public RegisterBase<0x4e, 8, ReadWriteMode> {};
+		struct SPDR0_ : public RegisterBase<0x4e> {};
 		//end SPI_ data register 0
 
 	}// end Serial-peripherial interface
@@ -293,27 +348,27 @@ namespace MCU_Mega328
 	namespace USART_
 	{
 		//USART0 data register
-		struct UDR0_ : public RegisterBase<0xc6, 8, ReadWriteMode> {};
+		struct UDR0_ : public RegisterBase<0xc6> {};
 		//end USART0 data register
 		
 		//USART control and status register 0A
-		struct UCSR0A_ : public RegisterBase<0xc0, 8 , ReadWriteMode> {};
+		struct UCSR0A_ : public RegisterBase<0xc0> {};
 		//end USART control and status register 0A
 		
 		//USART control and status register 0B
-		struct UCSR0B_ : public RegisterBase<0xc1, 8 , ReadWriteMode> {};
+		struct UCSR0B_ : public RegisterBase<0xc1> {};
 		//end USART control and status register 0B
 		
 		//USART control and status register 0C
-		struct UCSR0C_ : public RegisterBase<0xc2, 8 , ReadWriteMode> {};
+		struct UCSR0C_ : public RegisterBase<0xc2> {};
 		//end USART control and status register 0C
 		
 		//USART buad rate 0 register low
-		struct UBRR0L_ : public RegisterBase<0xc4, 8 , ReadWriteMode> {};
+		struct UBRR0L_ : public RegisterBase<0xc4> {};
 		// end USART buad rate 0 register low
 		
 		//USART buad rate 0 register high
-		struct UBRR0H_ : public RegisterBase<0xc5, 8 , ReadWriteMode> {};
+		struct UBRR0H_ : public RegisterBase<0xc5> {};
 		// end USART buad rate 0 register high
 			
 	}// end Universal synchronous/asynchronous receiver/transmitter
@@ -322,27 +377,27 @@ namespace MCU_Mega328
 	namespace TWI_
 	{
 		//TWI Bit rate register
-		struct TWBR_ : public RegisterBase<0xb8, 8, ReadWriteMode> {};
+		struct TWBR_ : public RegisterBase<0xb8> {};
 		// end TWI Bit rate register
 		
 		//TWI status register
-		struct TWSR_ : public RegisterBase<0xb9, 8, ReadWriteMode> {};
+		struct TWSR_ : public RegisterBase<0xb9> {};
 		// end TWI status register
 		
 		//TWI(slave) address register
-		struct TWAR_ : public RegisterBase<0xba, 8, ReadWriteMode> {};
+		struct TWAR_ : public RegisterBase<0xba> {};
 		// end TWI(slave) address register
 		
 		//TWI data register
-		struct TWDR_ : public RegisterBase<0xbb, 8, ReadWriteMode> {};
+		struct TWDR_ : public RegisterBase<0xbb> {};
 		// end TWI data register
 		
 		//TWI control register
-		struct TWCR_ : public RegisterBase<0xbc, 8, ReadWriteMode> {};
+		struct TWCR_ : public RegisterBase<0xbc> {};
 		// end TWI control register
 		
 		//TWI(slave) address mask register
-		struct TWAMR_ : public RegisterBase<0xbd, 8, ReadWriteMode> {};
+		struct TWAMR_ : public RegisterBase<0xbd> {};
 		//end TWI(slave) address mask register	
 		
 	}// end Two-wire interface
@@ -357,7 +412,7 @@ namespace MCU_Mega328
 		*/
 		
 		//Analog comparator control and status register
-		struct ACSR_ : public RegisterBase<0x50, 8,  ReadWriteMode> {};
+		struct ACSR_ : public RegisterBase<0x50> {};
 		// end Analog comparator control and status register
 				
 	}// end Analog comparator
@@ -366,23 +421,23 @@ namespace MCU_Mega328
 	namespace ADC_
 	{
 		//ADC multiplexer selection register
-		struct ADMUX_ : public RegisterBase<0x7c, 8, ReadWriteMode> {};
+		struct ADMUX_ : public RegisterBase<0x7c> {};
 		// end ADC multiplexer selection register
 		
 		//ADC control and status register A
-		struct ADCSRA_ : public RegisterBase<0x7a, 8, ReadWriteMode> {};
+		struct ADCSRA_ : public RegisterBase<0x7a> {};
 		// end ADC control and status register A
 		
 		//ADC control and status register B
-		struct ADCSRB_ : public RegisterBase<0x7b, 8,  ReadWriteMode> {};
+		struct ADCSRB_ : public RegisterBase<0x7b> {};
 		// end ADC control and status register B
 		
 		//ADC data register low
-		struct ADCL_ : public RegisterBase<0x78, 8,  ReadMode> {};
+		struct ADCL_ : public RegisterBase<0x78e> {};
 		// end ADC data register low
 		
 		//ADC data register high
-		struct ADCH_ : public RegisterBase<0x79, 8,  ReadMode> {};
+		struct ADCH_ : public RegisterBase<0x79> {};
 		// end ADC data register high
 
 	}// end Analog to digital converter
@@ -391,19 +446,19 @@ namespace MCU_Mega328
 	namespace EEPROM_
 	{
 		// EEPROM address register high
-		struct EEARH_ : public RegisterBase<0x42, 8,  ReadWriteMode> {};
+		struct EEARH_ : public RegisterBase<0x42e> {};
 		// end EEPROM address register high
 		
 		// EEPROM address register low
-		struct EEARL_ : public RegisterBase<0x41, 8,  ReadWriteMode> {};
+		struct EEARL_ : public RegisterBase<0x41> {};
 		// end EEPROM address register low
 		
 		// EEPROM data register
-		struct EEDR_ : public RegisterBase<0x40, 8,  ReadWriteMode> {};
+		struct EEDR_ : public RegisterBase<0x40> {};
 		// end EEPROM data register
 		
 		// EEPROM control register
-		struct EECR_ : public RegisterBase<0x3f, 8,  ReadWriteMode> {};
+		struct EECR_ : public RegisterBase<0x3f> {};
 		// end EEPROM control register
 				
 	}// end EEPROM
@@ -413,7 +468,7 @@ namespace MCU_Mega328
 	namespace DW_
 	{
 		//debugWire data register
-		struct DWDR_ : public RegisterBase<0x51, 8,  ReadWriteMode> {};
+		struct DWDR_ : public RegisterBase<0x51> {};
 		//end debugWire data register
 		
 	}// end Debug Wire on-chip debug system
@@ -422,7 +477,7 @@ namespace MCU_Mega328
 	namespace Self_programming_
 	{
 		//Store program memory control and status register
-		struct SPMCSR_ : public RegisterBase<0x57, 8,  ReadWriteMode> {};
+		struct SPMCSR_ : public RegisterBase<0x57> {};
 		//end Store program memory control and status register
 		
 	} //end Self_programming
