@@ -2,6 +2,7 @@
 #define _MCU_Mega328_HPP
 
 #include "RegisterBase.hpp"
+#include "IO_port_basic.hpp"
 
 // Atmega328 MicroController Unit 
 namespace MCU_Mega328
@@ -9,30 +10,10 @@ namespace MCU_Mega328
 	
 	namespace IO_
 	{
-		// IO port B		
-		struct PINB_ : public RegisterBase<0x23> {};
-		
-		struct DDRB_ : public RegisterBase<0x24> {};
-		
-		struct PORTB_ : public RegisterBase<0x25>{};
-		// end IO port B
-		
-		// IO port C
-		struct PINC_ : public RegisterBase<0x26> {};
-		
-		struct DDRC_ : public RegisterBase<0x27> {};
-		
-		struct PORTC_ : public RegisterBase<0x28> {};
-		// end IO port C
-		
-		// IO port D
-		struct PIND_ : public RegisterBase<0x29> {};
-		
-		struct DDRD_ : public RegisterBase<0x2A> {};
-		
-		struct PORTD_ : public RegisterBase<0x2B>	{};
-		// end IO port D
-		
+		struct PORTB_ : public IO_port_basic<0x23, 0x24, 0x25> {};
+		struct PORTC_ : public IO_port_basic<0x26, 0x27, 0x28> {};
+		struct PORTD_ : public IO_port_basic<0x29, 0x2A, 0x2B> {};
+				
 		//Digital input disable register 0
 		struct DIDR0_ : public RegisterBase<0x7e> {};
 		// end Digital input disable register 0
@@ -96,6 +77,9 @@ namespace MCU_Mega328
 		//Power reduction register
 		struct PRR_ : public RegisterBase<0x64> {};
 		// end Power reduction register
+		
+		inline static void cli(void) {asm volatile ("cli");}
+		inline static void sei(void) {asm volatile ("sei");}
 		
 	}// end MCU core control registers
 	
@@ -243,12 +227,75 @@ namespace MCU_Mega328
 			//TC2_ control register B
 			struct TCCR2B_ : public RegisterBase<0xb1> 
 			{
-      /*
-      Bit 7 – FOC2A: Force Output Compare A
-      Bit 6 – FOC2B: Force Output Compare B
-      Bit 3 – WGM22: Waveform Generation Mode
-      Bits 2:0 – CS2[2:0]: Clock Select 2 [n = 0..2]
-      */
+				/*
+				Bit 7 – FOC2A: Force Output Compare A
+				Bit 6 – FOC2B: Force Output Compare B
+				Bit 3 – WGM22: Waveform Generation Mode
+				Bits 2:0 – CS2[2:0]: Clock Select 2 [n = 0..2]
+				*/
+				
+				static void TimerStop(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<2)|(1<<1)|(1<<0);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler1(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<2));
+					byte_ |= (1<<0);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler8(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<2)|(1<<0));
+					byte_ |= (1<<1);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler32(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~(1<<2);
+					byte_ |= ((1<<1)|(1<<0));
+					Set(byte_);
+				}
+				
+				static void SetPrescaler64(void)
+				{			
+					uint8_t byte_ = Get();
+					byte_ &= ~((1<<1)|(1<<0));
+					byte_ |= (1<<2);
+					Set(byte_);
+				}
+				
+				static void SetPrescaler128(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~(1<<1);
+					byte_ |= ((1<<2)|(1<<0));
+					Set(byte_);
+				}
+				
+				static void SetPrescaler256(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ &= ~(1<<0);
+					byte_ |= ((1<<2)|(1<<1));
+					Set(byte_);
+				}
+				
+				static void SetPrescaler1024(void)
+				{
+					uint8_t byte_ = Get();
+					byte_ |= ((1<<2)|(1<<1)|(1<<0));
+					Set(byte_);
+				}
+				
 			};
 			// end TC2_ control register B
 			
