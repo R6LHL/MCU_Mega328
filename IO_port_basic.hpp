@@ -23,7 +23,7 @@ struct IO_port_basic
 		DDR_::ClearAll();
 		PORT_::ClearAll();
 	}
-}
+};
 
 
 #endif// _IO_PORT_BASIC

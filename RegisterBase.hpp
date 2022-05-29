@@ -31,8 +31,8 @@ struct RegisterBase
     Set(byte_);
   }
   
-  virtual static void SetAll(void){Set(0xFF);}
-  virtual static void ClearAll(void){Set(NULL);}
+  virtual void SetAll(void){Set(0xFF);}
+  virtual void ClearAll(void){Set(NULL);}
 	
 };
 
