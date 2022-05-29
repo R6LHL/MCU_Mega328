@@ -29,11 +29,7 @@ struct RegisterBase
     uint8_t byte_ = Get();
     byte_ &= ~(1<<bit_number);
     Set(byte_);
-  }
-  
-  virtual void SetAll(void){Set(0xFF);}
-  virtual void ClearAll(void){Set(NULL);}
-	
+  } 
 };
 
 #endif //_REGISTER_BASE_HPP
