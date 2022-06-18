@@ -228,14 +228,14 @@ namespace MCU
 		
 	}// end external interrupts
 	
-	namespace TC_ //Timer_counters
+	namespace TC //Timer_counters
 	{
 	
 		//General TC control register
 		struct GTCCR_ : public RegisterBase<0x43>	{};
 		//end General TC control register
 		
-		namespace TC0_ // Timer-counter 0 8bit
+		namespace TC0 // Timer-counter 0 8bit
 		{
 			//TC0_ flag register
 			struct TIFR0_ : public RegisterBase<0x35> {};
@@ -267,7 +267,7 @@ namespace MCU
 						
 		} //end Timer-counter 0
 		
-		namespace TC1_ // Timer-counter 1 16bit
+		namespace TC1 // Timer-counter 1 16bit
 		{
 			//TC1_ control register A
 			struct TCCR1A_ : public RegisterBase<0x80> {}; 
@@ -327,7 +327,7 @@ namespace MCU
 					
 		}//end  Timer-counter 1 16bit
 		
-		namespace TC2_ // Timer-counter 2 8bit
+		namespace TC2 // Timer-counter 2 8bit
 		{		
 			//TC2_ control register A
 			struct TCCR2A_ : public RegisterBase<0xb0> {};
@@ -436,7 +436,7 @@ namespace MCU
 	
 	
 	//Serial-peripherial interface
-	namespace SPI_
+	namespace SPI0
 	{
 		//SPI_ control register 0
 		struct SPCR0_ : public RegisterBase<0x4c> {};
@@ -453,7 +453,7 @@ namespace MCU
 	}// end Serial-peripherial interface
 	
 	//Universal synchronous/asynchronous receiver/transmitter
-	namespace USART_
+	namespace USART0
 	{
 		//USART0 data register
 		struct UDR0_ : public RegisterBase<0xc6> {};
@@ -482,7 +482,7 @@ namespace MCU
 	}// end Universal synchronous/asynchronous receiver/transmitter
 	
 	// Two-wire interface
-	namespace TWI_
+	namespace TWI
 	{
 		//TWI Bit rate register
 		struct TWBR_ : public RegisterBase<0xb8> {};
@@ -511,7 +511,7 @@ namespace MCU
 	}// end Two-wire interface
 	
 	//Analog comparator
-	namespace AC_
+	namespace AC
 	{
 		/*
 		//ADC control and status register B
@@ -526,7 +526,7 @@ namespace MCU
 	}// end Analog comparator
 	
 	//Analog to digital converter
-	namespace ADC_
+	namespace ADC
 	{
 		//ADC multiplexer selection register
 		struct ADMUX_ : public RegisterBase<0x7c> {};
@@ -551,7 +551,7 @@ namespace MCU
 	}// end Analog to digital converter
 	
 	//EEPROM
-	namespace EEPROM_
+	namespace EEPROM
 	{
 		// EEPROM address register high
 		struct EEARH_ : public RegisterBase<0x42e> {};
@@ -573,7 +573,7 @@ namespace MCU
 	
 	
 	//Debug Wire on-chip debug system
-	namespace DW_
+	namespace DW
 	{
 		//debugWire data register
 		struct DWDR_ : public RegisterBase<0x51> {};
@@ -582,7 +582,7 @@ namespace MCU
 	}// end Debug Wire on-chip debug system
 	
 	//Self_programming
-	namespace Self_programming_
+	namespace Self_programming
 	{
 		//Store program memory control and status register
 		struct SPMCSR_ : public RegisterBase<0x57> {};
