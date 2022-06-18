@@ -8,7 +8,7 @@
 namespace MCU
 {
 	
-	namespace IO_
+	namespace IO
 	{
 		struct PORTB_ : public IO_port_basic<0x23, 0x24, 0x25> {};
 		struct PORTC_ : public IO_port_basic<0x26, 0x27, 0x28> {};
@@ -36,7 +36,7 @@ namespace MCU
 		
 	} // end IO
 	
-	namespace Core_
+	namespace Core
 	{
 		// Status register
 		struct SREG_ : public RegisterBase<0x5f> {};
@@ -75,10 +75,124 @@ namespace MCU
 		// end Watchdog timer control register
 		
 		//Power reduction register
-		struct PRR_ : public RegisterBase<0x64> {}; 		
+		struct PRR_ : public RegisterBase<0x64> {}; 
+
+		//ADC power management
+		static void ADC_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<0);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void ADC_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<0);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end ADC power management
+		
+		//USART0 power management
+		static void USART0_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<1);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void USART0_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<1);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end USART0 power management
+		
+		//SPI power management
+		static void SPI0_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<2);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void SPI0_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<2);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end SPI power management
+		
+		//Timer1 power management
+		static void TC1_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<3);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void TC1_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<3);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end Timer1 power management
+		
+		//Timer0 power management
+		static void TC0_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<5);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void TC0_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<5);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end Timer0 power management
+		
+		//Timer2 power management
+		static void TC2_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<6);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void TC2_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<6);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end Timer2 power management
+		
+		//TWI power management
+		static void TWI0_powerUp(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ &= ~(1<<7);
+				TCCR2B_ ::Set(byte_);
+			}
+			
+		static void TWI0_powerDown(void)
+			{
+				uint8_t byte_ = PRR_ ::Get();
+				byte_ |= (1<<7);
+				TCCR2B_ ::Set(byte_);
+			}
+		//end TWI power management
+			
+		// end Power reduction register
 	}// end MCU core control registers
 	
-	namespace EXINT_ //external interrupts
+	namespace EXINT //external interrupts
 	{
 		//External interrupt control register A
 		struct EICRA_ : public RegisterBase<0x69> {};
