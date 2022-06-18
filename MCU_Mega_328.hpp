@@ -8,7 +8,7 @@
 namespace MCU
 {
 	
-	namespace IO
+	namespace IO_
 	{
 		struct PORTB_ : public IO_port_basic<0x23, 0x24, 0x25> {};
 		struct PORTC_ : public IO_port_basic<0x26, 0x27, 0x28> {};
@@ -82,14 +82,14 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<0);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void ADC_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<0);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end ADC power management
 		
@@ -98,14 +98,14 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<1);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void USART0_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<1);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end USART0 power management
 		
@@ -114,14 +114,14 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<2);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void SPI0_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<2);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end SPI power management
 		
@@ -130,14 +130,14 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<3);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void TC1_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<3);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end Timer1 power management
 		
@@ -146,14 +146,14 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<5);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void TC0_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<5);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end Timer0 power management
 		
@@ -162,14 +162,14 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<6);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void TC2_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<6);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end Timer2 power management
 		
@@ -178,21 +178,21 @@ namespace MCU
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ &= ~(1<<7);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 			
 		static void TWI0_powerDown(void)
 			{
 				uint8_t byte_ = PRR_ ::Get();
 				byte_ |= (1<<7);
-				TCCR2B_ ::Set(byte_);
+				PRR_ ::Set(byte_);
 			}
 		//end TWI power management
 			
 		// end Power reduction register
 	}// end MCU core control registers
 	
-	namespace EXINT //external interrupts
+	namespace EXINT_ //external interrupts
 	{
 		//External interrupt control register A
 		struct EICRA_ : public RegisterBase<0x69> {};
@@ -235,7 +235,7 @@ namespace MCU
 		struct GTCCR_ : public RegisterBase<0x43>	{};
 		//end General TC control register
 		
-		namespace TC0 // Timer-counter 0 8bit
+		namespace TC0_ // Timer-counter 0 8bit
 		{
 			//TC0_ flag register
 			struct TIFR0_ : public RegisterBase<0x35> {};
@@ -267,7 +267,7 @@ namespace MCU
 						
 		} //end Timer-counter 0
 		
-		namespace TC1 // Timer-counter 1 16bit
+		namespace TC1_ // Timer-counter 1 16bit
 		{
 			//TC1_ control register A
 			struct TCCR1A_ : public RegisterBase<0x80> {}; 
@@ -327,17 +327,14 @@ namespace MCU
 					
 		}//end  Timer-counter 1 16bit
 		
-		namespace TC2 // Timer-counter 2 8bit
+		namespace TC2_ // Timer-counter 2 8bit
 		{		
 			//TC2_ control register A
 			struct TCCR2A_ : public RegisterBase<0xb0> {};
 			// end TC2_ control register A
 			
 			//TC2_ control register B
-			struct TCCR2B_ : public RegisterBase<0xb1> 
-			{
-      
-			};
+			struct TCCR2B_ : public RegisterBase<0xb1> {};
 			// end TC2_ control register B
 			
 			//TC2_ counter value register
@@ -436,7 +433,7 @@ namespace MCU
 	
 	
 	//Serial-peripherial interface
-	namespace SPI0
+	namespace SPI0_
 	{
 		//SPI_ control register 0
 		struct SPCR0_ : public RegisterBase<0x4c> {};
@@ -453,7 +450,7 @@ namespace MCU
 	}// end Serial-peripherial interface
 	
 	//Universal synchronous/asynchronous receiver/transmitter
-	namespace USART0
+	namespace USART0_
 	{
 		//USART0 data register
 		struct UDR0_ : public RegisterBase<0xc6> {};
@@ -511,7 +508,7 @@ namespace MCU
 	}// end Two-wire interface
 	
 	//Analog comparator
-	namespace AC
+	namespace AC_
 	{
 		/*
 		//ADC control and status register B
@@ -526,7 +523,7 @@ namespace MCU
 	}// end Analog comparator
 	
 	//Analog to digital converter
-	namespace ADC
+	namespace ADC_
 	{
 		//ADC multiplexer selection register
 		struct ADMUX_ : public RegisterBase<0x7c> {};
@@ -551,7 +548,7 @@ namespace MCU
 	}// end Analog to digital converter
 	
 	//EEPROM
-	namespace EEPROM
+	namespace EEPROM_
 	{
 		// EEPROM address register high
 		struct EEARH_ : public RegisterBase<0x42e> {};
@@ -573,7 +570,7 @@ namespace MCU
 	
 	
 	//Debug Wire on-chip debug system
-	namespace DW
+	namespace DW_
 	{
 		//debugWire data register
 		struct DWDR_ : public RegisterBase<0x51> {};
