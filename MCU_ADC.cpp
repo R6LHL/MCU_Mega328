@@ -45,14 +45,14 @@ void MCU::ADC_::Auto_Trigger_Enable(void){ADCSRA_::SetBit(5);}
 void MCU::ADC_::Interrupt_Enable(void){ADCSRA_::SetBit(3);}
 void MCU::ADC_::Interrupt_Disable(void){ADCSRA_::ClearBit(3);}
 
-void MCU::ADC_::Prescaler::Set_2(void)
+void MCU::ADC_::Prescaler::set_2(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte &= ~((1<<2)|(1<<1)|(1<<0));
 	ADCSRA_::Set(config_byte);
 }
 			
-void MCU::ADC_::Prescaler::Set_4(void)
+void MCU::ADC_::Prescaler::set_4(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte &= ~((1<<2)|(1<<0));
@@ -60,7 +60,7 @@ void MCU::ADC_::Prescaler::Set_4(void)
 	ADCSRA_::Set(config_byte);
 }
 			
-void MCU::ADC_::Prescaler::Set_8(void)
+void MCU::ADC_::Prescaler::set_8(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte &= ~(1<<2);
@@ -68,7 +68,7 @@ void MCU::ADC_::Prescaler::Set_8(void)
 	ADCSRA_::Set(config_byte);
 }
 			
-void MCU::ADC_::Prescaler::Set_16(void)
+void MCU::ADC_::Prescaler::set_16(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte &= ~((1<<1)|(1<<0));
@@ -76,7 +76,7 @@ void MCU::ADC_::Prescaler::Set_16(void)
 	ADCSRA_::Set(config_byte);
 }
 			
-void MCU::ADC_::Prescaler::Set_32(void)
+void MCU::ADC_::Prescaler::set_32(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte &= ~(1<<1);
@@ -84,7 +84,7 @@ void MCU::ADC_::Prescaler::Set_32(void)
 	ADCSRA_::Set(config_byte);
 }
 			
-void MCU::ADC_::Prescaler::Set_64(void)
+void MCU::ADC_::Prescaler::set_64(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte &= ~(1<<0);
@@ -92,7 +92,7 @@ void MCU::ADC_::Prescaler::Set_64(void)
 	ADCSRA_::Set(config_byte);
 }
 			
-void MCU::ADC_::Prescaler::Set_128(void)
+void MCU::ADC_::Prescaler::set_128(void)
 {
 	uint8_t config_byte = ADCSRA_::Get();
 	config_byte |= ((1<<2)|(1<<1)|(1<<0));

@@ -1,0 +1,207 @@
+#######################################
+# Syntax Coloring Map For MCU_Mega_328 v1.0
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MCU	KEYWORD1
+IO_	KEYWORD1
+Sleep_	KEYWORD1
+Mode	KEYWORD1
+Core	KEYWORD1
+Watchdog	KEYWORD1
+Prescaler	KEYWORD1
+EXITNT_		KEYWORD1
+INT0_Mode	KEYWORD1
+INT1_Mode	KEYWORD1
+TCO_	KEYWORD1
+TC1_	KEYWORD1
+TC2_	KEYWORD1
+Interrupt_source	KEYWORD1
+SPI_	KEYWORD1
+Data_order	KEYWORD1
+Rate	KEYWORD1
+USART_	KEYWORD1
+Interrupts	KEYWORD1
+Set	KEYWORD1
+Character_size	KEYWORD1
+Parity_control	KEYWORD1
+TWI_	KEYWORD1
+AC_	KEYWORD1
+ADC_	KEYWORD1
+Reference	KEYWORD1
+Adjust_Result	KEYWORD1
+Trigger_Source	KEYWORD1
+EEPROM_	KEYWORD1
+Self_programming	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+Idle	KEYWORD2
+ADC_NoiseReduction	KEYWORD2
+PowerDown	KEYWORD2
+PowerSave	KEYWORD2
+Standby	KEYWORD2
+ExtendedStandby	KEYWORD2
+Enable	KEYWORD2
+Disable	KEYWORD2
+Go	KEYWORD2
+is_Sleep_Enabled	KEYWORD2
+powerDown_All_Peripherials	KEYWORD2
+powerUp_All_Peripherials	KEYWORD2
+BrownOut_Disable	KEYWORD2
+is_I_Flag_Set	KEYWORD2
+set_I_Flag	KEYWORD2
+clear_I_Flag	KEYWORD2
+Interrupt_Enable	KEYWORD2
+Interrupt_Disable	KEYWORD2
+is_InterruptEnabled	KEYWORD2
+Change_Enable	KEYWORD2
+Change_Disable	KEYWORD2
+System_reset_enable	KEYWORD2
+System_reset_disable	KEYWORD2
+stop	KEYWORD2
+interrupt	KEYWORD2
+SystemReset	KEYWORD2
+Interrupt_And_SystemReset	KEYWORD2
+low_level	KEYWORD2
+any_change	KEYWORD2
+falling_edge	KEYWORD2
+rising_edge	KEYWORD2
+INT0_Enable	KEYWORD2
+INT0_Disable	KEYWORD2
+INT1_Enable	KEYWORD2
+INT1_Disable	KEYWORD2
+powerUp	KEYWORD2
+powerDown	KEYWORD2
+TimerStop	KEYWORD2
+reset	KEYWORD2
+set_0	KEYWORD2
+set_1	KEYWORD2
+set_2	KEYWORD2
+set_3	KEYWORD2
+set_4	KEYWORD2
+set_8	KEYWORD2
+set_16	KEYWORD2
+set_32	KEYWORD2
+set_64	KEYWORD2
+set_128	KEYWORD2
+set_256	KEYWORD2
+set_1024	KEYWORD2
+set_2048	KEYWORD2
+set_4096	KEYWORD2
+set_8192	KEYWORD2
+set_16348	KEYWORD2
+set_32768	KEYWORD2
+set_65536	KEYWORD2
+set_131072	KEYWORD2
+set_262144	KEYWORD2
+set_524288	KEYWORD2
+set_1048576	KEYWORD2
+Overflow_Enable	KEYWORD2
+Overflow_Disable	KEYWORD2
+is_TRX_Complete	KEYWORD2
+is_Data_Collision	KEYWORD2
+Set_As_Master	KEYWORD2
+Set_As_Slave	KEYWORD2
+MSB_first	KEYWORD2
+LSB_first	KEYWORD2
+F_div_2	KEYWORD2
+F_div_4	KEYWORD2
+F_div_8	KEYWORD2
+F_div_16	KEYWORD2
+F_div_32	KEYWORD2
+F_div_32x2	KEYWORD2
+F_div_64	KEYWORD2
+F_div_128	KEYWORD2
+recieve	KEYWORD2
+transmit	KEYWORD2
+is_RX_Complete	KEYWORD2
+is_TX_Complete	KEYWORD2
+TX_Complete	KEYWORD2
+is_Data_Register_Empty	KEYWORD2
+is_Frame_Error	KEYWORD2
+is_Data_Overrun	KEYWORD2
+is_Parity_Error	KEYWORD2
+RX	KEYWORD2
+RX_9bit	KEYWORD2
+TX	KEYWORD2
+TX_9bit	KEYWORD2
+RX_Complete_Enable	KEYWORD2
+RX_Complete_Disable	KEYWORD2
+TX_Complete_Enable	KEYWORD2
+TX_Complete_Disable	KEYWORD2
+Data_reg_Empty_Enable	KEYWORD2
+Data_reg_Empty_Disable	KEYWORD2
+RX_Enable	KEYWORD2
+RX_Disable	KEYWORD2
+TX_Enable	KEYWORD2
+TX_Disable	KEYWORD2
+BaudRate	KEYWORD2
+BaudRate_div_16	KEYWORD2
+BaudRate_div_8	KEYWORD2
+Multiprocessor_Mode	KEYWORD2
+noMultiprocessor_Mode	KEYWORD2
+Stop_1bit	KEYWORD2
+Stop_2bits	KEYWORD2
+Clock_polarity0	KEYWORD2
+Clock_polarity1	KEYWORD2
+b5_bit	KEYWORD2
+b6_bit	KEYWORD2
+b7_bit	KEYWORD2
+b8_bit	KEYWORD2
+b9_bit	KEYWORD2
+Asynchronous	KEYWORD2
+Synchronous	KEYWORD2
+MasterSPI	KEYWORD2
+get	KEYWORD2
+disable	KEYWORD2
+even	KEYWORD2
+odd	KEYWORD2
+get_status	KEYWORD2
+get_prescaler	KEYWORD2
+set_ACK_enabled	KEYWORD2
+set_ACK_disabled	KEYWORD2
+send_Start	KEYWORD2
+send_SLA_W	KEYWORD2
+send_SLA_R	KEYWORD2
+send_Data_byte	KEYWORD2
+send_Stop	KEYWORD2
+send_Reg_Byte	KEYWORD2
+read_Reg_Byte	KEYWORD2
+digital_Input_Enable	KEYWORD2
+digital_Input_Disable	KEYWORD2
+AREF	KEYWORD2
+AVCC	KEYWORD2
+Internal_1V1	KEYWORD2
+Left	KEYWORD2
+Right	KEYWORD2
+is_Result_Left_Adjusted	KEYWORD2
+Select_Channel_	KEYWORD2
+Start_Conversion	KEYWORD2
+Is_Conversion_Running	KEYWORD2
+Auto_Trigger_Enable	KEYWORD2
+Free_running	KEYWORD2
+AC_	KEYWORD2
+EXINT0_	KEYWORD2
+TC0_Comp_Match_A	KEYWORD2
+TC0_Overflow	KEYWORD2
+TC1_Comp_Match_B	KEYWORD2
+TC1_Overflow	KEYWORD2
+TC1_Capture_Event	KEYWORD2
+Get_Value	KEYWORD2
+digital_Input_Disable	KEYWORD2
+digital_Input_Enable	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################

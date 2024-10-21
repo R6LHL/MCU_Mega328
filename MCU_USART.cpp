@@ -59,8 +59,8 @@ void MCU::USART_::TX_Disable(void)
 	UCSR0B_::ClearBit(3);
 }
 
-void MCU::USART_::Set::BuadRate_div_16(void){UCSR0A_::ClearBit(1);}
-void MCU::USART_::Set::BuadRate_div_8(void){UCSR0A_::SetBit(1);}
+void MCU::USART_::Set::BaudRate_div_16(void){UCSR0A_::ClearBit(1);}
+void MCU::USART_::Set::BaudRate_div_8(void){UCSR0A_::SetBit(1);}
 void MCU::USART_::Set::Multiprocessor_Mode(void){UCSR0A_::SetBit(0);}
 void MCU::USART_::Set::noMultiprocessor_Mode(void){UCSR0A_::ClearBit(0);}
 			

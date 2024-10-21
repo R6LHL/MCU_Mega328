@@ -1,3 +1,9 @@
+/*
+Mega 328 HAL library by R6LHL
+v.1.0
+6.10.2024
+*/
+
 #ifndef MCU_Mega328_HPP
 #define MCU_Mega328_HPP
 
@@ -540,8 +546,8 @@ namespace MCU
 		namespace Set
 		{
 			 void BaudRate(uint32_t fosc, uint16_t baudrate);
-			 void BuadRate_div_16(void);
-			 void BuadRate_div_8(void);
+			 void BaudRate_div_16(void);
+			 void BaudRate_div_8(void);
 			 void Multiprocessor_Mode(void);
 			 void noMultiprocessor_Mode(void);
 			
@@ -688,10 +694,10 @@ namespace MCU
 		// TWI bitrate prescaler
 		namespace Prescaler
 		{
-			void Set_1(void);
-			void Set_4(void);	
-			void Set_16(void);
-			void Set_64(void);
+			void set_1(void);
+			void set_4(void);	
+			void set_16(void);
+			void set_64(void);
 		} // end TWI bitrate prescaler
 		
 		//Get TWI prescaler
@@ -773,13 +779,13 @@ namespace MCU
 		
 		namespace Prescaler
 		{
-			void Set_2(void);
-			void Set_4(void);
-			void Set_8(void);
-			void Set_16(void);
-			void Set_32(void);
-			void Set_64(void);
-			void Set_128(void);
+			void set_2(void);
+			void set_4(void);
+			void set_8(void);
+			void set_16(void);
+			void set_32(void);
+			void set_64(void);
+			void set_128(void);
 		}	
 		// end ADC control and status register A
 		

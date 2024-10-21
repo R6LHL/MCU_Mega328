@@ -13,14 +13,14 @@ uint8_t MCU::TWI_::get_status(void)
 	return byte_;
 }
 
-void MCU::TWI_::Prescaler::Set_1(void)
+void MCU::TWI_::Prescaler::set_1(void)
 {
 	uint8_t byte_ = TWSR_::Get();
 	byte_ &= ~((1<<TWSR_::b_TWPS1)|(1<<TWSR_::b_TWPS0));
 	TWSR_::Set(byte_);
 }
 
-void MCU::TWI_::Prescaler::Set_4(void)
+void MCU::TWI_::Prescaler::set_4(void)
 {
 	uint8_t byte_ = TWSR_::Get();
 	byte_ &= ~(1<<TWSR_::b_TWPS1);
@@ -28,7 +28,7 @@ void MCU::TWI_::Prescaler::Set_4(void)
 	TWSR_::Set(byte_);
 }
 
-void MCU::TWI_::Prescaler::Set_16(void)
+void MCU::TWI_::Prescaler::set_16(void)
 {
 	uint8_t byte_ = TWSR_::Get();
 	byte_ &= ~(1<<TWSR_::b_TWPS0);
@@ -36,7 +36,7 @@ void MCU::TWI_::Prescaler::Set_16(void)
 	TWSR_::Set(byte_);
 }
 
-void MCU::TWI_::Prescaler::Set_64(void)
+void MCU::TWI_::Prescaler::set_64(void)
 {
 	uint8_t byte_ = TWSR_::Get();
 	byte_ |= (1<<TWSR_::b_TWPS1)|(1<<TWSR_::b_TWPS0);
